@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Usuario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('../assets/image/imagen_logo_.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #007bff;
+        }
+
+        .login-container {
+            max-width: 400px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        .btn-register {
+            background-color: #f79c42;
+            border: none;
+            font-weight: bold;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .btn-register:hover {
+            background-color: #ff7f50;
+        }
+
+        .text-danger {
+            font-size: 12px;
+            display: none;
+        }
+
+        .login-container img {
+            width: 250px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="logo-container">
+            <img src="../assets/image/logo_nombre.png" alt="Logo">
+        </div>
+
+        <h3 class="text-center mb-4" style="color: #007bff;">Crear Usuario</h3>
+        <form id="registerForm">
+            <div class="mb-3">
+                <label for="username" class="form-label">Usuario</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Ingresa tu usuario">
+                <div class="text-danger" id="usernameError">Por favor, ingresa tu usuario.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu contraseña">
+                <div class="text-danger" id="passwordError">Por favor, ingresa tu contraseña.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirma tu contraseña">
+                <div class="text-danger" id="confirmPasswordError">Las contraseñas no coinciden.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="rol" class="form-label">Categoria</label>
+                <select id="rol" name="rol" class="form-select">
+                    <option value="">Selecciona un rol</option> <!-- Opción por defecto -->
+                    <option value="Administrador">Administrador</option> <!-- Opción por defecto -->
+                    <option value="Gerente General">Gerente General</option>
+                    <option value="Operaciones">Operaciones</option>
+                    <option value="HSE">HSE</option>
+                    <option value="Garita de Seguridad">Garita de Seguridad</option>
+                </select>
+                <div class="text-danger" id="rolError">Asignar un rol.</div>
+            </div>
+            
+
+            <div id="error-message" class="alert alert-danger" style="display: none;">
+                Error al crear el usuario. Intenta nuevamente.
+            </div>
+
+            <button type="button" class="btn btn-register w-100" onclick="crear_usuario()">Crear Usuario</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="../assets/js/ajax.js"></script>
+
+</body>
+
+</html>

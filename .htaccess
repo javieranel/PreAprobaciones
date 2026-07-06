@@ -1,0 +1,20 @@
+RewriteEngine On
+
+# Página principal
+DirectoryIndex login.php
+
+# Evitar listar carpetas
+Options -Indexes
+
+# Proteger archivos sensibles
+<FilesMatch "^(config\.php|conexion\.php|\.env|composer\.(json|lock))$">
+    Require all denied
+</FilesMatch>
+
+# Bloquear acceso a archivos ocultos
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Redirigir index.php al login
+RewriteRule ^index\.php$ login.php [L,R=302]

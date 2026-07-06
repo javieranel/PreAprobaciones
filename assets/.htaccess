@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Permitir el acceso a la página de inicio de sesión
+RewriteCond %{REQUEST_URI} !^/login.html$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^control_permisos/examples/(barcazas.php|capitanes_barcazas.php|cia_inspeccion.php|dashboard.php|inspectores.php|pilotos.php|remolcadores.php|tanqueros.php) /login.html [L,R=302]
+
+# Restringir el acceso a otras páginas
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ - [F]

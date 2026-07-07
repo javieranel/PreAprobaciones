@@ -53,10 +53,12 @@ foreach ($cias_vencidas as $empresa) {
                    WHERE categoria = 'Inspectores' AND nombre_empresa = '$empresa_escapada'";
 
   $con->query($sql_update);
+
+
 }
-
-
-
+if (isset($_SESSION['usuario']) && $_SESSION['usuario'] === 'KarenNavarro') {
+    require_once __DIR__ . "../../php_functions/enviar_alertas.php";
+}
 
 
 // Cerrar conexión

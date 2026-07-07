@@ -1,10 +1,33 @@
 <?php
 
 require_once "../connection/db_connection.php";
+//echo "Entró a enviar_alertas.php <br>";
+//======================================
+// VERIFICAR SI YA SE ENVIÓ HOY
+//======================================
 
-require_once "./PHPMailer/PHPMailer.php";
-require_once "./PHPMailer/SMTP.php";
-require_once "./PHPMailer/Exception.php";
+$hoy = date('Y-m-d');
+
+$sqlControl = "
+SELECT id
+FROM control_envios
+WHERE proceso='documentos'
+AND fecha='$hoy'
+LIMIT 1
+";
+
+$resultControl = $con->query($sqlControl);
+//echo "Registros encontrados: " . $resultControl->num_rows . "<br>";
+
+if ($resultControl->num_rows > 0) {
+    return;
+}
+
+
+
+require_once __DIR__ . "/PHPMailer/PHPMailer.php";
+require_once __DIR__ . "/PHPMailer/SMTP.php";
+require_once __DIR__ . "/PHPMailer/Exception.php";
 
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -244,10 +267,7 @@ while ($row = $resultado->fetch_assoc()) {
 
 
 if ($cantidad == 0) {
-
-    echo "No hay documentos próximos a vencer";
-
-    exit;
+    return;
 }
 
 
@@ -378,9 +398,9 @@ try {
 
 
     // Destinatario
-    $mail->addAddress('javieranel0107@gmail.com');
+
     $mail->AddAddress('jtapia@melonesterminal.com');
-    $mail->AddAddress('knavarro@melonesterminal.com');
+    //$mail->AddAddress('knavarro@melonesterminal.com');
 
     $mail->isHTML(true);
     $mail->CharSet = 'UTF-8';
@@ -421,7 +441,7 @@ border-radius:8px;
 
 <p>
 
-El sistema de control documental detectó documentos próximos a vencer.
+El Sistema de Gestion de Pre-Aprobaciones detectó documentos próximos a vencer.
 
 </p>
 
@@ -483,11 +503,26 @@ Sistema de Control Documental.
 
     $mail->send();
 
+    // Registrar el envío del día
+
+    $sqlInsert = "
+
+        INSERT INTO control_envios
+        (proceso,fecha)
+
+        VALUES
+
+        ('documentos','$hoy')
+
+        ";
+
+            $con->query($sqlInsert);
+
+     //echo "Correo enviado correctamente";
 
 
-    echo "Correo enviado correctamente";
 } catch (Exception $e) {
 
 
-    echo "Error: " . $mail->ErrorInfo;
+    error_log("Error PHPMailer: " . $mail->ErrorInfo);
 }

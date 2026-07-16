@@ -42,8 +42,8 @@ function inicio_de_sesion() {
     success: function (response) {
       // Si el login es exitoso, redirigir al dashboard
       if (response.trim() === "Login exitoso") {
-        //window.location.href = 'https://apps.melonesoilterminal.com/cumplimiento/permisos/examples/dashboard.php';
-        window.location.href = 'http://localhost/cumplimiento/permisos/examples/dashboard.php';
+        window.location.href = 'https://apps.melonesoilterminal.com/cumplimiento/permisos/examples/dashboard.php';
+        //window.location.href = 'http://localhost/cumplimiento/permisos/examples/dashboard.php';
       } else {
         // Mostrar el mensaje de error general si la respuesta es de fallo
         $('#error-message').text(response).show(); // Mostrar el mensaje de error
@@ -211,7 +211,8 @@ function guardarBarcaza() {
 
   $.ajax({
 
-    url: 'http://localhost/cumplimiento/permisos/php_functions/barcaza/nueva_barcaza.php',
+    //url: 'http://localhost/cumplimiento/permisos/php_functions/barcaza/nueva_barcaza.php',
+    url: 'https://apps.melonesoilterminal.com/cumplimiento/permisos/php_functions/barcaza/nueva_barcaza.php',
     type: 'POST',
     contentType: 'application/json',
     data: JSON.stringify(formData),
@@ -309,8 +310,8 @@ function eliminarBarcaza(id) {
       // Solicitud AJAX para eliminar
       $.ajax({
 
-        url: 'http://localhost/cumplimiento/permisos/php_functions/barcaza/eliminar_barcaza.php',
-        //url: 'https://apps.melonesoilterminal.com/cumplimiento/permisos/php_functions/barcaza/eliminar_barcaza.php',
+        //url: 'http://localhost/cumplimiento/permisos/php_functions/barcaza/eliminar_barcaza.php',
+        url: 'https://apps.melonesoilterminal.com/cumplimiento/permisos/php_functions/barcaza/eliminar_barcaza.php',
 
         type: 'POST',
 
@@ -421,8 +422,8 @@ function guardarCambios() {
   // Hacer una solicitud AJAX para guardar los cambios en el servidor
   $.ajax({
 
-    url: 'http://localhost/cumplimiento/permisos/php_functions/barcaza/guardar_cambios_barcaza.php',
-    //url: 'https://apps.melonesoilterminal.com/cumplimiento/permisos/php_functions/barcaza/guardar_cambios_barcaza.php',
+    //url: 'http://localhost/cumplimiento/permisos/php_functions/barcaza/guardar_cambios_barcaza.php',
+    url: 'https://apps.melonesoilterminal.com/cumplimiento/permisos/php_functions/barcaza/guardar_cambios_barcaza.php',
     type: 'POST',
     data: formData,
     success: function (response) {
@@ -499,8 +500,8 @@ function guardarCapitanes() {
   $.ajax({
 
 
-    url: 'http://localhost/cumplimiento/permisos/php_functions/capitanes/nuevos_capitanes.php',
-    //url: 'https://apps.melonesoilterminal.com/cumplimiento/permisos/php_functions/capitanes/nuevos_capitanes.php',
+    //url: 'http://localhost/cumplimiento/permisos/php_functions/capitanes/nuevos_capitanes.php',
+    url: 'https://apps.melonesoilterminal.com/cumplimiento/permisos/php_functions/capitanes/nuevos_capitanes.php',
 
 
     type: 'POST',
@@ -606,8 +607,8 @@ function guardarCambiosCapitanes() {
   // Hacer una solicitud AJAX para guardar los cambios en el servidor
   $.ajax({
 
-    // url: 'https://apps.melonesoilterminal.com/cumplimiento/permisos/php_functions/capitanes/guardar_cambios_capitanes.php',
-    url: 'http://localhost/cumplimiento/permisos/php_functions/capitanes/guardar_cambios_capitanes.php',
+    url: 'https://apps.melonesoilterminal.com/cumplimiento/permisos/php_functions/capitanes/guardar_cambios_capitanes.php',
+    //url: 'http://localhost/cumplimiento/permisos/php_functions/capitanes/guardar_cambios_capitanes.php',
     type: 'POST',
     data: formData,
     success: function (response) {

@@ -34,9 +34,11 @@ function enviarCorreo($asunto, $titulo, $categoria, $nombre, $empresa)
         );
 
         // Destinatario
-        $mail->addAddress('javieranel0107@gmail.com');
+        
         $mail->AddAddress('jtapia@melonesterminal.com');
-        //$mail->AddAddress('knavarro@melonesterminal.com');
+        $mail->AddAddress('knavarro@melonesterminal.com');
+        $mail->AddAddress('supervisor-ops@melonesterminal.com');
+        $mail->AddAddress('operaciones@melonesterminal.com');
 
         $mail->isHTML(true);
         $mail->CharSet = 'UTF-8';

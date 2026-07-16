@@ -400,7 +400,7 @@ try {
     // Destinatario
 
     $mail->AddAddress('jtapia@melonesterminal.com');
-    //$mail->AddAddress('knavarro@melonesterminal.com');
+    $mail->AddAddress('knavarro@melonesterminal.com');
 
     $mail->isHTML(true);
     $mail->CharSet = 'UTF-8';
